@@ -75,7 +75,7 @@ export default class App extends React.Component {
         </div>
         <div>
           <h2>Jokes</h2>
-          {this.getTodoItemsArray()}
+          {this.getJokesArray()}
         </div>
       </div>
     )
