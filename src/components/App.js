@@ -11,11 +11,33 @@ class App extends React.Component {
 
   constructor(){
     super();
-    this.state = {};
+    this.state = {
+      todos : TodoData,
+      jokes : jokesData,
+      contacts: contactData
+    };
+    this.handleChange = this.handleChange.bind(this)
   }
 
+  handleChange(id) {
+    this.setState(prevState => {
+      const updatedTodos = prevState.todos.map(todo => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            completed : !todo.completed
+          }
+        }
+        return todo;
+      })
+      return {
+        todos : updatedTodos
+      }
+    })
+  }
+  
   getJokesArray() {
-    return this.jokeComponents = jokesData.map(joke => {
+    return this.jokeComponents = this.state.jokes.map(joke => {
       return (
       <Joke key={joke.id} question={joke.question} punchLine={joke.punchLine} />
       )
@@ -23,7 +45,7 @@ class App extends React.Component {
   }
 
   getContactsArray() {
-    return this.contactComponents = contactData.map(contact => {
+    return this.contactComponents = this.state.contacts.map(contact => {
       return (
         <ContactCard key={contact.id} contact={contact}/>
       )
@@ -31,9 +53,9 @@ class App extends React.Component {
   }
 
   getTodoItemsArray() {
-    return this.TodoDataComponents = TodoData.map(todo => {
+    return this.TodoDataComponents = this.state.todos.map(todo => {
       return (
-        <TodoItem key={todo.id} item={todo}/>
+        <TodoItem key={todo.id} item={todo} handleChange={this.handleChange}/>
       )
     });
   }
