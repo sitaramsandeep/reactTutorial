@@ -1,6 +1,6 @@
 import React from 'react';
 
-class TodoItem extends React.Component {
+export default class TodoItem extends React.Component {
   render() {
     return(
     <div className="todo-item">
@@ -11,4 +11,3 @@ class TodoItem extends React.Component {
   }
 }
 
-export default TodoItem

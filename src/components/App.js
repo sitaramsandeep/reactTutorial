@@ -7,7 +7,7 @@ import MyInfo from './MyInfo';
 import TodoData from './TodoData';
 import TodoItem from './TodoItem';
 
-class App extends React.Component {
+export default class App extends React.Component {
 
   constructor(){
     super();
@@ -81,5 +81,3 @@ class App extends React.Component {
     )
   }
 }
-
-export default App

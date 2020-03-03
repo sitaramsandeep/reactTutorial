@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Header extends React.Component{
+export default class Header extends React.Component{
   render() {
     const date = new Date();
     const hours = date.getHours();
@@ -27,5 +27,3 @@ class Header extends React.Component{
     )
   }
 }
-
-export default Header

@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Joke extends React.Component {
+export default class Joke extends React.Component {
   render() {
     return (
       <div>
@@ -11,5 +11,3 @@ class Joke extends React.Component {
     )
   }
 }
-
-export default Joke

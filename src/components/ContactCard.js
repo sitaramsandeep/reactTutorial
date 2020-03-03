@@ -1,6 +1,6 @@
 import React from 'react';
 
-class ContactCard extends React.Component {
+export default class ContactCard extends React.Component {
   render() {
     return (
       <div className="contact-card">
@@ -12,5 +12,3 @@ class ContactCard extends React.Component {
     )
   }
 }
-
-export default ContactCard
