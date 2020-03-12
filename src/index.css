@@ -55,14 +55,9 @@ ol, ul {
   margin-left: 20px;
 }
 
-.H1 {
-  text-align: center;
-}
-
 .todo-list {
   border: 1px solid #efefef;
   padding: 30px;
-  width: 50%;
 }
 
 .todo-item {

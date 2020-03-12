@@ -14,9 +14,18 @@ export default class App extends React.Component {
     this.state = {
       todos : TodoData,
       jokes : jokesData,
-      contacts: contactData
+      contacts: contactData,
+      isLoading: true
     };
     this.handleChange = this.handleChange.bind(this)
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+          isLoading: false
+      })
+  }, 1500)
   }
 
   handleChange(id) {
@@ -62,21 +71,26 @@ export default class App extends React.Component {
 
   render() {
     return (
+      
       <div>
-        <h2>this is Parent Component</h2>
-          <MyInfo/>
-        <div className="todo-list">
-          <h2>Todo List</h2>
-          {this.getTodoItemsArray()}
-        </div>
+        {this.state.isLoading ?
+        <h1>Loading...</h1> :
         <div>
-          <h2>Contacts</h2>
-          { this.getContactsArray()}
-        </div>
-        <div>
-          <h2>Jokes</h2>
-          {this.getJokesArray()}
-        </div>
+          <h2>this is Parent Component</h2>
+            <MyInfo/>
+          <div className="todo-list">
+            <h2>Todo List</h2>
+            {this.getTodoItemsArray()}
+          </div>
+          <div>
+            <h2>Contacts</h2>
+            { this.getContactsArray()}
+          </div>
+          <div>
+            <h2>Jokes</h2>
+            {this.getJokesArray()}
+          </div>
+        </div> }
       </div>
     )
   }
