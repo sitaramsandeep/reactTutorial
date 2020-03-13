@@ -18,9 +18,12 @@ export default class App extends React.Component {
       contacts: contactData,
       characters: [],
       isLoading: true,
-      isApiRqComplete: false
+      isApiRqComplete: false,
+      firstName: "",
+      lastName: ""
     };
     this.handleChange = this.handleChange.bind(this)
+    this.handleInputChange = this.handleInputChange.bind(this)
   }
 
   componentDidMount() {
@@ -53,6 +56,13 @@ export default class App extends React.Component {
       return {
         todos : updatedTodos
       }
+    })
+  }
+
+  handleInputChange(event) {
+    const {name, value} = event.target
+    this.setState({
+        [name]: value
     })
   }
   
@@ -94,6 +104,12 @@ export default class App extends React.Component {
         {this.state.isLoading ?
         <h1>Loading...</h1> :
         <div>
+          <form>
+            <input type="text" value={this.state.firstName} name="firstName" placeholder="First Name" onChange={this.handleInputChange} />
+            <br />
+            <input type="text" value={this.state.lastName} name="lastName" placeholder="Last Name" onChange={this.handleInputChange} />
+            <h1>{this.state.firstName} {this.state.lastName}</h1>
+          </form>
           <h2>this is Parent Component</h2>
             <MyInfo/>
           <div className="todo-list">
