@@ -2,9 +2,9 @@ body {
   font: 14px "Century Gothic", Futura, sans-serif;
   margin: 20px;
   background-color: white;
-  margin: auto;
-  display: flex;
-  width: 100%;
+  margin: 20px;
+  display: block;
+  width: auto;
   flex-direction: column;
   align-items: center;
 }
@@ -58,14 +58,15 @@ ol, ul {
 .todo-list {
   border: 1px solid #efefef;
   padding: 30px;
+  width: 50%;
 }
 
 .todo-item {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 30px 20px 0;
-  width: 70%;
+  padding: 30px 20px;
+  width: 90%;
   border-bottom: 1px solid #cecece;
   font-weight: 100;
 }
@@ -81,14 +82,39 @@ ol, ul {
 }
 
 .contact-card > img {
-  width: 100%;
+  width: auto;
   height: auto;
 }
 
 .contact-card > h3 {
-  text-align: center;
+  text-align: left;
 }
 
 .contact-card > p {
   font-size: 12px;
+}
+
+.jokesCont {
+  width: 50%;
+}
+
+header {
+  margin: -20px -20px 0px;
+  padding: 5px;
+  background-color: aliceblue;
+}
+
+header > h1 {
+  text-align: center;
+
+}
+
+footer {
+  margin: -20px -20px 0px;
+  padding: 5px;
+  background-color: aliceblue;
+}
+
+footer > h3 {
+  text-align: center;
 }

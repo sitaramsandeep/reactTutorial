@@ -21,7 +21,12 @@ export default class Header extends React.Component{
     return(
       <div>
         <header>
-          <h1 className="H1" > <b style={styles}>{`${timeOfDay}!`}</b> This is my React Tutorial App</h1>
+          <h1 className="H1" >
+            <span>
+              <span><b style={styles}>{`${timeOfDay}!`}</b></span>
+              <span>This is my React Tutorial App</span>
+            </span>
+          </h1>
         </header>
       </div>
     )
