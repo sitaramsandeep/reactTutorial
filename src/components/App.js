@@ -24,6 +24,7 @@ export default class App extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
+    this.getMoreDetails = this.getMoreDetails.bind(this)
   }
 
   componentDidMount() {
@@ -56,6 +57,30 @@ export default class App extends React.Component {
       return {
         todos : updatedTodos
       }
+    })
+  }
+  
+     worldDetailsClicked(world, character) {
+    this.setState(prevState => {
+      const updatedCharacter = prevState.characters.map(char => {
+        if (char.name === character.name) {
+          return {
+            ...char,
+            world : world
+          }
+        }
+        return char;
+      })
+      return {
+        characters : updatedCharacter
+      }
+    })
+  }
+
+  getMoreDetails(character) {
+    fetch(character.homeworld).then(response => response.json())
+    .then(data => {
+      this.worldDetailsClicked(data, character);
     })
   }
 
@@ -92,7 +117,7 @@ export default class App extends React.Component {
   getStarWarsList() {
     return this.starWarsCharList = this.state.characters.map(char => {
       return (
-        <StarWarsList key={char.url} character={char}/>
+        <StarWarsList key={char.url} character={char} getMoreDetails={this.getMoreDetails}/>
       )
     });
   }
