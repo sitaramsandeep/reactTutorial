@@ -4,6 +4,7 @@ import contactData from './ContactData';
 import Joke from './Joke';
 import jokesData from './JokesData';
 import MyInfo from './MyInfo';
+import StarWarsList from './StarWarList';
 import TodoData from './TodoData';
 import TodoItem from './TodoItem';
 
@@ -15,17 +16,27 @@ export default class App extends React.Component {
       todos : TodoData,
       jokes : jokesData,
       contacts: contactData,
-      isLoading: true
+      characters: [],
+      isLoading: true,
+      isApiRqComplete: false
     };
     this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount() {
+    fetch("https://swapi.co/api/people")
+    .then(response => response.json())
+    .then(data => {
+        this.setState({
+            characters: data.results,
+            isApiRqComplete: true
+        })
+    })
     setTimeout(() => {
       this.setState({
           isLoading: false
       })
-  }, 1500)
+  }, 0)
   }
 
   handleChange(id) {
@@ -68,6 +79,13 @@ export default class App extends React.Component {
       )
     });
   }
+  getStarWarsList() {
+    return this.starWarsCharList = this.state.characters.map(char => {
+      return (
+        <StarWarsList key={char.url} character={char}/>
+      )
+    });
+  }
 
   render() {
     return (
@@ -90,7 +108,16 @@ export default class App extends React.Component {
             <h2>Jokes</h2>
             {this.getJokesArray()}
           </div>
-        </div> }
+          <div>
+          {this.state.isApiRqComplete ? 
+            <div>
+              <h2>Star Wars List</h2>
+              {this.getStarWarsList()}
+            </div>
+          : <div>Star Wars Data Loading May the Force be with you </div>}
+          </div>
+        </div> 
+        }
       </div>
     )
   }

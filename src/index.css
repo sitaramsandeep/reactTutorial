@@ -110,7 +110,7 @@ header > h1 {
 }
 
 footer {
-  margin: -20px -20px 0px;
+  margin: 0px -20px -20px;
   padding: 5px;
   background-color: aliceblue;
 }
